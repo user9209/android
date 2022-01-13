@@ -50,10 +50,10 @@ import org.cryptomator.presentation.ui.dialog.ReplaceDialog
 import org.cryptomator.presentation.ui.dialog.SymLinkDialog
 import org.cryptomator.presentation.ui.dialog.UploadCloudFileDialog
 import org.cryptomator.presentation.ui.fragment.BrowseFilesFragment
-import java.util.ArrayList
 import java.util.regex.Pattern
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.toolbar_layout.toolbar
+import timber.log.Timber
 
 @Activity
 class BrowseFilesActivity : BaseActivity(), //
@@ -465,6 +465,7 @@ class BrowseFilesActivity : BaseActivity(), //
 	}
 
 	override fun showCloudNodes(nodes: List<CloudNodeModel<*>>) {
+		Timber.tag("BrowseFilesActivity").i("Filter: show new nodes")
 		browseFilesFragment().show(nodes)
 	}
 
@@ -597,6 +598,7 @@ class BrowseFilesActivity : BaseActivity(), //
 	}
 
 	private fun updateFilter(query: String?) {
+		Timber.tag("BrowseFilesActivity").i("Filter: new query is: $query")
 		showLoading(true)
 		browseFilesFragment().setFilterText(query.orEmpty())
 		browseFilesPresenter.onFolderReloadContent(folder)

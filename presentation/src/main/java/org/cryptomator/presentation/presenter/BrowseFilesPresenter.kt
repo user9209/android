@@ -187,10 +187,12 @@ class BrowseFilesPresenter @Inject constructor( //
 	}
 
 	private fun getCloudList(cloudFolderModel: CloudFolderModel) {
+		Timber.tag("BrowseFilesPresenter").i("Filter: update folder")
 		getCloudListUseCase //
 			.withFolder(cloudFolderModel.toCloudNode()) //
 			.run(object : DefaultResultHandler<List<CloudNode>>() {
 				override fun onSuccess(cloudNodes: List<CloudNode>) {
+					Timber.tag("BrowseFilesPresenter").i("Filter: folder updated, result: ${cloudNodes.map { node -> node.name }}")
 					if (cloudNodes.isEmpty()) {
 						clearCloudList()
 					} else {

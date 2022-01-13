@@ -37,6 +37,7 @@ import kotlinx.android.synthetic.main.view_browses_files_extra_text_and_button.c
 import kotlinx.android.synthetic.main.view_browses_files_extra_text_and_button.extraText
 import kotlinx.android.synthetic.main.view_browses_files_extra_text_and_button.extraTextAndButtonLayout
 import kotlinx.android.synthetic.main.view_empty_folder.emptyFolderHint
+import timber.log.Timber
 
 @Fragment(R.layout.fragment_browse_files)
 class BrowseFilesFragment : BaseFragment() {
@@ -184,6 +185,7 @@ class BrowseFilesFragment : BaseFragment() {
 	fun show(nodes: List<CloudNodeModel<*>>?) {
 		cloudNodesAdapter.clear()
 		cloudNodesAdapter.addAll(cloudNodesAdapter.filterNodes(nodes, filterText))
+		Timber.tag("BrowseFilesFragment").i("Filter: filtered nodes: ${cloudNodesAdapter.all.map { node -> node.name }}")
 		updateEmptyFolderHint()
 	}
 
