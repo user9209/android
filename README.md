@@ -19,8 +19,17 @@ Cryptomator for Android is currently available in the following  distribution ch
 ### Dependencies
 
 * Git
-* JDK 11
+* Android SDK (JDK 11) 
 * Gradle
+
+#### Android SDK (win)
+
+- [Download](https://developer.android.com/studio#downloads) ``commandlinetools-*-*_latest.zip`` 
+- Extract ``commandlinetools-*-*_latest.zip`` 
+- List sdks: ``sdkmanager.bat --sdk_root=C:\...\android-sdk --list``
+- Install sdk: ``sdkmanager.bat --sdk_root=C:\..\android-sdk --install build-tools;28.0.3``  (Mapping of version numbers [see](https://www.droidwiki.org/wiki/Liste_von_Android-Versionen))
+- Set ANDROID_SDK_ROOT env to "C:\...\android-sdk"
+
 
 ### Run Git and Gradle
 
